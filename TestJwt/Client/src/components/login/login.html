@@ -1,0 +1,8 @@
+<h2>Login</h2>
+
+<form (submit)="login()" novalidate>
+    <input type="text" placeholder="Username" [(ngModel)]="model.username" name="username" />
+    <input type="password" placeholder="Password" [(ngModel)]="model.password" name="password" />
+    <p>{{message}}</p>
+    <button type="submit">Login</button>
+</form>

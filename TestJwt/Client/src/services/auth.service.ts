@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class AuthService {
+
     constructor(private http: Http) { }
 
     getToken(username: string, password: string) {
@@ -12,8 +13,16 @@ export class AuthService {
         const headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
         return this.http.post('/token', body, { headers: headers })
-            .toPromise().then(res => res.json())
+            .toPromise().then(res => {
+                var o = res.json();
+                localStorage.setItem('access_token', o.access_token);
+                return o;
+            })
             .catch(this.handleError);
+    }
+
+    clear() {
+        localStorage.removeItem('access_token');
     }
 
     private handleError(error: any): Promise<any> {

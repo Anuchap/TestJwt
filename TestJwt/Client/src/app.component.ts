@@ -4,7 +4,7 @@ import { DataService } from './services/data.service';
 
 @Component({
   selector: 'my-app',
-  template: require('./app.component.html')
+  template: require('./app.html')
 })
 export class AppComponent {
   result = '';

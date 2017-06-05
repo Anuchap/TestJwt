@@ -8,6 +8,12 @@ export class DataService {
 
     constructor(private http: Http) { }
 
+    getForAll() {
+        return this.http.get('/api/data/forall')
+            .toPromise().then(res => res.json())
+            .catch(this.handleError);
+    }
+
     getAuthtenticate() {
         var headers = new Headers();
         this.createAuthorizationHeader(headers);
